@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { CgProfile } from 'react-icons/cg'
-import { BiWalletAlt } from 'react-icons/bi'
+import { IoWalletOutline } from 'react-icons/io5'
 
 import logo from '../../public/recon.png'
 
@@ -30,7 +30,7 @@ export default function Navbar() {
           <CgProfile className='hover:text-white block text-3xl mx-3' />
         </Link>
         <Link href="/about">
-          <BiWalletAlt className='hover:text-white block text-3xl mx-3' />
+          <IoWalletOutline className='hover:text-white block text-3xl mx-3' />
         </Link>
       </div>
     </div>

@@ -8,13 +8,9 @@ module.exports = {
       white: '#fff',
       black: '#000',
       gray: {
-        darkest: '#0f0f10',
-        darker: '#18181b',
         dark: '#19191a',
         DEFAULT: '#222222',
-        light: '#1f1f23',
-        lighter: '#3a3b3c',
-        lightest: '#464748',
+        light: '#242424',
         mute: '#BEBEBE'
       },
       valorant: '#FF4655',
@@ -36,7 +32,8 @@ module.exports = {
       '3xl': '1.875rem',
       '4xl': '2.25rem',
       '5xl': '3rem',
-      '6xl': '4rem'
+      '6xl': '4rem',
+      '7xl': '5rem',
     }
   },
   variants: {
