@@ -4,7 +4,7 @@ import { FiUpload } from 'react-icons/fi'
 import { useState } from 'react'
 
 export default function Create() {
-  const [videoFileName, setVideoFileName] = useState('')
+  const [clipFileName, setClipFileName] = useState('')
   const [thumbnailFileName, setThumbnailFileName] = useState('')
 
   const [name, setName] = useState('')
@@ -13,8 +13,8 @@ export default function Create() {
   const [tag, setTag] = useState('Competitive')
   const [price, setPrice] = useState('')
 
-  function openVideoInput() {
-    var inputEl = document.getElementById('vid-upload')
+  function openClipInput() {
+    var inputEl = document.getElementById('clip-upload')
     inputEl.click()
   }
 
@@ -23,9 +23,9 @@ export default function Create() {
     inputEl.click()
   }
 
-  function onVideoUpload() {
-    var inputEl = document.getElementById('vid-upload')
-    setVideoFileName(inputEl.files.item(0).name)
+  function onClipUpload() {
+    var inputEl = document.getElementById('clip-upload')
+    setClipFileName(inputEl.files.item(0).name)
   }
 
   function onThumbnailUpload() {
@@ -54,12 +54,12 @@ export default function Create() {
           <h1 className='my-4 text-primary text-2xl text-left font-bold'>Create your NFT</h1>
           <main className='flex flex-row justify-evenly'>
             <div>
-              <h3 className='text-xl text-left my-3 font-semibold text-primary'>Upload video</h3>
-              <div className='w-80 h-80 flex border-2 border-primary cursor-pointer' onClick={openVideoInput}>
-                <input type='file' id='vid-upload' className='w-full h-full hidden' onChange={onVideoUpload} />
+              <h3 className='text-xl text-left my-3 font-semibold text-primary'>Upload clip</h3>
+              <div className='w-80 h-80 flex border-2 border-primary cursor-pointer' onClick={openClipInput}>
+                <input type='file' id='clip-upload' className='w-full h-full hidden' onChange={onClipUpload} />
                 <FiUpload className='text-7xl mx-auto my-auto text-primary' />
               </div>
-              <p className='my-2 text-primary text-sm'>{videoFileName}</p>
+              <p className='my-2 text-primary text-sm'>{clipFileName}</p>
             </div>
             <div>
               <h3 className='text-xl text-left my-3 font-semibold text-primary'>Thumbnail</h3>

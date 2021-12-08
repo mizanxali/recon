@@ -7,7 +7,7 @@ import logo from '../../public/recon.png'
 
 export default function Navbar() {
   return (
-    <div className='flex flex-row justify-between items-center h-14 bg-primary text-black px-2'>
+    <div className='flex flex-row justify-between items-center bg-primary text-black px-2'>
       <Link href="/">
         <Image
           className='cursor-pointer'
@@ -16,7 +16,7 @@ export default function Navbar() {
           height={40}
         />
       </Link>
-      <div className='hidden md:flex flex-row'>
+      <div className='hidden md:flex flex-row items-center'>
         <Link href="/explore">
           <a className='hover:text-white mx-3 text-lg font-semibold'>Explore</a>
         </Link>
@@ -27,10 +27,10 @@ export default function Navbar() {
           <a className='hover:text-white mx-3 text-lg font-semibold'>About</a>
         </Link>
         <Link href="/about">
-          <CgProfile className='hover:text-white block text-3xl mx-3' />
+          <CgProfile className='hover:text-white block text-2xl mx-3' />
         </Link>
         <Link href="/about">
-          <IoWalletOutline className='hover:text-white block text-3xl mx-3' />
+          <IoWalletOutline className='hover:text-white block text-2xl mx-3' />
         </Link>
       </div>
     </div>

@@ -42,7 +42,7 @@ export default function Home() {
   //       itemId: i.itemId.toNumber(),
   //       seller: i.seller,
   //       owner: i.owner,
-  //       video: meta.data.video,
+  //       clip: meta.data.clip,
   //       name: meta.data.name,
   //       description: meta.data.description,
   //       game: meta.data.game,
