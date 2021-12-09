@@ -2,26 +2,31 @@ import Image from 'next/image'
 import { FiHeart } from 'react-icons/fi'
 import testthumbnail from '../../public/test-thumbnail.png'
 
-export default function ClipCard() {
+export default function ClipCard({ NFT }) {
+
+  const { clip, description, game, itemId, name, owner, price, seller, tag, thumbnail } = NFT
+
   return (
     <div className='bg-gray-light py-1 px-1 rounded-xl'>
       <Image
         className='cursor-pointer'
-        src={testthumbnail}
+        src={thumbnail}
+        width={40}
+        height={40}
       />
       <div className='w-full flex flex-col items-start text-left px-2'>
         <div className='my-2'>
-          <h6 className='text-gray-mute font-semibold text-xs'>Valorant</h6>
-          <p className='text-primary text-sm'>Insane spray transfer 3K on Bind!</p>
+          <h6 className='text-gray-mute font-semibold text-xs'>{game}</h6>
+          <p className='text-primary text-sm'>{name}</p>
         </div>
         <div className='my-2 w-full flex flex-row justify-between items-center'>
           <div className=''>
             <h6 className='text-gray-mute font-semibold text-xs'>Price</h6>
-            <p className='text-primary text-sm'>0.3 ETH</p>
+            <p className='text-primary text-sm'>{price}</p>
           </div>
           <div className=''>
             <h6 className='text-gray-mute font-semibold text-xs'>Creator</h6>
-            <p className='text-primary text-sm'>mizanxali</p>
+            <p className='text-primary text-sm'>{seller}</p>
           </div>
         </div>
         <div className='my-2 w-full flex flex-row justify-between items-center'>

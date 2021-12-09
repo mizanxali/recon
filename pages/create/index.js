@@ -1,9 +1,25 @@
 import Head from 'next/head'
 import Navbar from '../../components/common/Navbar'
 import { FiUpload } from 'react-icons/fi'
+import { BsCheck2Square } from 'react-icons/bs'
 import { useState } from 'react'
+import { ethers } from 'ethers'
+import { create as ipfsHttpClient } from 'ipfs-http-client'
+import { useRouter } from 'next/router'
+import Web3Modal from 'web3modal'
+
+const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
+
+import {
+  nftaddress, nftmarketaddress
+} from '../../config'
+
+import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
+import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 
 export default function Create() {
+  const router = useRouter()
+
   const [clipFileName, setClipFileName] = useState('')
   const [thumbnailFileName, setThumbnailFileName] = useState('')
 
@@ -12,6 +28,12 @@ export default function Create() {
   const [game, setGame] = useState('Valorant')
   const [tag, setTag] = useState('Competitive')
   const [price, setPrice] = useState('')
+
+  const [isUploadClipDisabled, setIsUploadClipDisabled] = useState(false)
+  const [isUploadThumbnailDisabled, setIsUploadThumbnailDisabled] = useState(false)
+
+  const [clipFileUrl, setClipFileUrl] = useState(null)
+  const [thumbnailFileUrl, setThumbnailFileUrl] = useState(null)
 
   function openClipInput() {
     var inputEl = document.getElementById('clip-upload')
@@ -23,22 +45,90 @@ export default function Create() {
     inputEl.click()
   }
 
-  function onClipUpload() {
-    var inputEl = document.getElementById('clip-upload')
-    setClipFileName(inputEl.files.item(0).name)
+  async function onClipUpload(e) {
+    setIsUploadClipDisabled(true)
+
+    const file = e.target.files[0]
+    setClipFileName(file.name)
+
+    try {
+      const added = await client.add(
+        file,
+        {
+          progress: (prog) => console.log(`received: ${prog}`)
+        }
+      )
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      setClipFileUrl(url)
+    } catch (error) {
+      console.log('Error uploading clip file: ', error)
+    }
   }
 
-  function onThumbnailUpload() {
-    var inputEl = document.getElementById('thumbnail-upload')
-    setThumbnailFileName(inputEl.files.item(0).name)
+  async function onThumbnailUpload(e) {
+    setIsUploadThumbnailDisabled(true)
+
+    const file = e.target.files[0]
+    setThumbnailFileName(file.name)
+
+    try {
+      const added = await client.add(
+        file,
+        {
+          progress: (prog) => console.log(`received: ${prog}`)
+        }
+      )
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      setThumbnailFileUrl(url)
+    } catch (error) {
+      console.log('Error uploading thumbnail file: ', error)
+    }
+  }
+
+  async function createMarketItem() {
+    if (!name || !desc || !game || !tag || !price || !clipFileUrl || !thumbnailFileUrl) return
+
+    const data = JSON.stringify({
+      name, desc, game, tag, thumbnail: thumbnailFileUrl, clip: clipFileUrl
+    })
+
+    try {
+      const added = await client.add(data)
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      createSale(url)
+    } catch (error) {
+      console.log('Error uploading data to IPFS: ', error)
+    }
+  }
+
+  async function createSale(url) {
+    const web3Modal = new Web3Modal()
+    const connection = await web3Modal.connect()
+    const provider = new ethers.providers.Web3Provider(connection)
+    const signer = provider.getSigner()
+
+    /* next, create the item */
+    let contract = new ethers.Contract(nftaddress, NFT.abi, signer)
+    let transaction = await contract.createToken(url)
+    let tx = await transaction.wait()
+    let event = tx.events[0]
+    let value = event.args[2]
+    let tokenId = value.toNumber()
+
+    const thePrice = ethers.utils.parseUnits(price, 'ether')
+
+    /* then list the item for sale on the marketplace */
+    contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
+    let listingPrice = await contract.getListingPrice()
+    listingPrice = listingPrice.toString()
+
+    transaction = await contract.createMarketItem(nftaddress, tokenId, thePrice, { value: listingPrice })
+    await transaction.wait()
+    router.push('/')
   }
 
   function onSubmitNFT() {
-    console.log(name)
-    console.log(desc)
-    console.log(game)
-    console.log(tag)
-    console.log(price)
+    createMarketItem()
   }
 
   return (
@@ -56,16 +146,16 @@ export default function Create() {
             <div>
               <h3 className='text-xl text-left my-3 font-semibold text-primary'>Upload clip</h3>
               <div className='w-80 h-80 flex border-2 border-primary cursor-pointer' onClick={openClipInput}>
-                <input type='file' id='clip-upload' className='w-full h-full hidden' onChange={onClipUpload} />
-                <FiUpload className='text-7xl mx-auto my-auto text-primary' />
+                <input type='file' id='clip-upload' className='w-full h-full hidden' onChange={onClipUpload} disabled={isUploadClipDisabled} />
+                {isUploadClipDisabled ? <BsCheck2Square className='text-7xl mx-auto my-auto text-primary' /> : <FiUpload className='text-7xl mx-auto my-auto text-primary' />}
               </div>
               <p className='my-2 text-primary text-sm'>{clipFileName}</p>
             </div>
             <div>
               <h3 className='text-xl text-left my-3 font-semibold text-primary'>Thumbnail</h3>
               <div className='w-80 h-80 flex border-2 border-primary cursor-pointer' onClick={openThumbnailInput}>
-                <input type='file' id='thumbnail-upload' className='w-full h-full hidden' onChange={onThumbnailUpload} />
-                <FiUpload className='text-7xl mx-auto my-auto text-primary' />
+                <input type='file' id='thumbnail-upload' className='w-full h-full hidden' onChange={onThumbnailUpload} disabled={isUploadThumbnailDisabled} />
+                {isUploadThumbnailDisabled ? <BsCheck2Square className='text-7xl mx-auto my-auto text-primary' /> : <FiUpload className='text-7xl mx-auto my-auto text-primary' />}
               </div>
               <p className='my-2 text-primary text-sm'>{thumbnailFileName}</p>
             </div>

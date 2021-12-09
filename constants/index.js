@@ -2,19 +2,16 @@ export const VALORANT_GAME_ID = 0
 export const CSGO_GAME_ID = 1
 export const FORTNITE_GAME_ID = 2
 
-export const GAMES = [
-  {
-    NAME: 'Valorant',
-    STRING: 'valorant'
-  },
-  {
-    NAME: 'CS:GO',
-    STRING: 'csgo'
-  },
-  {
-    NAME: 'Fortnite',
-    STRING: 'fortnite'
-  },
+export const GAME_NAMES = [
+  'Valorant',
+  'CS:GO',
+  'Fortnite'
+]
+
+export const GAME_KEYS = [
+  'valorant',
+  'csgo',
+  'fortnite'
 ]
 
 export const VALORANT_DESCRIPTION = 'Valorant is a team-based first-person hero shooter set in the near future. Players play as one of a set of agents, characters designed based on several countries and cultures around the world.'

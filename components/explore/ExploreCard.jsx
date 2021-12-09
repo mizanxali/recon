@@ -3,11 +3,11 @@ import Link from 'next/link'
 import valorantlogo from '../../public/valorant-logo.svg'
 import csgologo from '../../public/csgo-logo.png'
 import fortnitelogo from '../../public/fortnite-logo.jpg'
-import { CSGO_DESCRIPTION, CSGO_GAME_ID, FORTNITE_DESCRIPTION, FORTNITE_GAME_ID, GAMES, VALORANT_DESCRIPTION, VALORANT_GAME_ID } from '../../constants'
+import { CSGO_DESCRIPTION, CSGO_GAME_ID, FORTNITE_DESCRIPTION, FORTNITE_GAME_ID, GAME_KEYS, VALORANT_DESCRIPTION, VALORANT_GAME_ID } from '../../constants'
 
 export default function ExploreCard({ gameId }) {
   return (
-    <Link href={`explore/${GAMES[gameId].STRING}`}>
+    <Link href={`explore/${GAME_KEYS[gameId]}`}>
       <div className='relative cursor-pointer'>
         <div className=' absolute top-7 left-0 right-0 mx-auto z-10'>
           <GameLogo gameId={gameId} />

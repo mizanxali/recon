@@ -4,13 +4,38 @@ import { useRouter } from 'next/router'
 import { Player } from 'video-react'
 import { FiHeart } from 'react-icons/fi'
 import { FaRegDotCircle } from 'react-icons/fa'
+import { ethers } from 'ethers'
+import Web3Modal from 'web3modal'
+
+import {
+  nftaddress, nftmarketaddress
+} from '../../config'
+
+import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
+import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 
 import Navbar from '../../components/common/Navbar'
 
-export default function NFT() {
+export default function NFTPage() {
   const router = useRouter()
   const { nftId } = router.query
   console.log(nftId);
+
+  async function buyNft(nft) {
+    const web3Modal = new Web3Modal()
+    const connection = await web3Modal.connect()
+    const provider = new ethers.providers.Web3Provider(connection)
+
+    const signer = provider.getSigner()
+    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
+
+    const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
+    const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
+      value: price
+    })
+    await transaction.wait()
+    router.push('/')
+  }
 
   return (
     <>
