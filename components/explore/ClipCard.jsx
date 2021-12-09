@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { FiHeart } from 'react-icons/fi'
 import testthumbnail from '../../public/test-thumbnail.png'
-import { CSGO_GAME_ID, FORTNITE_GAME_ID, VALORANT_GAME_ID } from '../../constants'
 
 export default function ClipCard() {
   return (

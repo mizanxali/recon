@@ -8,7 +8,7 @@ import logo from '../../public/recon.png'
 export default function Navbar() {
   return (
     <div className='flex flex-row justify-between items-center bg-primary text-black px-2'>
-      <Link href="/">
+      <Link href='/'>
         <Image
           className='cursor-pointer'
           src={logo}
@@ -17,19 +17,19 @@ export default function Navbar() {
         />
       </Link>
       <div className='hidden md:flex flex-row items-center'>
-        <Link href="/explore">
+        <Link href='/explore'>
           <a className='hover:text-white mx-3 text-lg font-semibold'>Explore</a>
         </Link>
-        <Link href="/create">
+        <Link href='/create'>
           <a className='hover:text-white mx-3 text-lg font-semibold'>Create</a>
         </Link>
-        <Link href="/about">
+        <Link href='/about'>
           <a className='hover:text-white mx-3 text-lg font-semibold'>About</a>
         </Link>
-        <Link href="/about">
+        <Link href='/about'>
           <CgProfile className='hover:text-white block text-2xl mx-3' />
         </Link>
-        <Link href="/about">
+        <Link href='/about'>
           <IoWalletOutline className='hover:text-white block text-2xl mx-3' />
         </Link>
       </div>
