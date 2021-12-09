@@ -18,9 +18,6 @@ export default function Explore() {
           <ExploreCard gameId={VALORANT_GAME_ID} />
           <ExploreCard gameId={CSGO_GAME_ID} />
           <ExploreCard gameId={FORTNITE_GAME_ID} />
-          <ExploreCard gameId={VALORANT_GAME_ID} />
-          <ExploreCard gameId={CSGO_GAME_ID} />
-          <ExploreCard gameId={FORTNITE_GAME_ID} />
         </div>
       </div>
     </>

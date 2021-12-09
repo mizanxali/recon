@@ -1,10 +1,16 @@
 import Image from 'next/image'
+import router, { useRouter } from 'next/router'
 import { FiHeart } from 'react-icons/fi'
 import testthumbnail from '../../public/test-thumbnail.png'
 
 export default function ClipCard({ NFT }) {
+  const router = useRouter()
 
   const { clip, description, game, itemId, name, owner, price, seller, tag, thumbnail } = NFT
+
+  function goToNFT() {
+    router.push(`/nfts/${itemId}`)
+  }
 
   return (
     <div className='bg-gray-light py-1 px-1 rounded-xl'>
@@ -30,7 +36,7 @@ export default function ClipCard({ NFT }) {
           </div>
         </div>
         <div className='my-2 w-full flex flex-row justify-between items-center'>
-          <button className='bg-primary text-black text-sm px-2 py-1 font-semibold rounded-lg'>Buy Now</button>
+          <button onClick={goToNFT} className='bg-primary text-black text-sm px-2 py-1 font-semibold rounded-lg'>Buy Now</button>
           <FiHeart className='text-red text-base' />
         </div>
       </div>

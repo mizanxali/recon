@@ -26,8 +26,8 @@ export default function Navbar() {
         <Link href='/about'>
           <a className='hover:text-white mx-3 text-lg font-semibold'>About</a>
         </Link>
-        <Link href='/about'>
-          <CgProfile className='hover:text-white block text-2xl mx-3' />
+        <Link href='/profile'>
+          <CgProfile className='cursor-pointer hover:text-white block text-2xl mx-3' />
         </Link>
         <Link href='/about'>
           <IoWalletOutline className='hover:text-white block text-2xl mx-3' />
