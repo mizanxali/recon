@@ -2,13 +2,17 @@ import Image from 'next/image'
 import Head from 'next/head'
 import Navbar from '../components/common/Navbar'
 import Footer from '../components/common/Footer'
+import ClipCard from '../components/explore/ClipCard'
 import { GiWallet } from 'react-icons/gi'
 import { BsCollectionPlayFill } from 'react-icons/bs'
 import { MdManageSearch } from 'react-icons/md'
 
 import logo from '../public/recon.png'
 
-export default function Home() {
+export default function Home({ NFTs }) {
+
+  const randomNFT = NFTs[Math.floor(Math.random() * NFTs.length)]
+
   return (
     <>
       <Navbar />
@@ -25,11 +29,7 @@ export default function Home() {
             <button className='my-2 bg-primary text-black text-xl px-8 py-1 font-semibold rounded-lg'>Explore</button>
           </section>
           <section className='h-full w-1/2 bg-primary flex flex-col items-center justify-center'>
-            <Image
-              src={logo}
-              width={180}
-              height={55}
-            />
+            {randomNFT && <ClipCard NFT={randomNFT} isOnLandingPage={true} />}
           </section>
         </main>
         <div className='py-8'>

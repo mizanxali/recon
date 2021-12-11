@@ -42,6 +42,7 @@ function MyApp({ Component, pageProps }) {
         itemId: i.itemId.toNumber(),
         seller: i.seller,
         owner: i.owner,
+        sold: i.sold,
         clip: meta.data.clip,
         thumbnail: meta.data.thumbnail,
         name: meta.data.name,
@@ -82,6 +83,7 @@ function MyApp({ Component, pageProps }) {
         itemId: i.itemId.toNumber(),
         seller: i.seller,
         owner: i.owner,
+        sold: i.sold,
         clip: meta.data.clip,
         thumbnail: meta.data.thumbnail,
         name: meta.data.name,
@@ -101,6 +103,7 @@ function MyApp({ Component, pageProps }) {
         itemId: i.itemId.toNumber(),
         seller: i.seller,
         owner: i.owner,
+        sold: i.sold,
         clip: meta.data.clip,
         thumbnail: meta.data.thumbnail,
         name: meta.data.name,
@@ -114,6 +117,7 @@ function MyApp({ Component, pageProps }) {
     setOwnedNfts(myNFTItems)
     const soldItems = createdNFTItems.filter(i => i.sold)
     setSoldNfts(soldItems)
+    console.log(createdNFTItems);
     setCreatedNfts(createdNFTItems)
   }
 

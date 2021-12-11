@@ -3,7 +3,7 @@ import router, { useRouter } from 'next/router'
 import { FiHeart } from 'react-icons/fi'
 import testthumbnail from '../../public/test-thumbnail.png'
 
-export default function ClipCard({ NFT }) {
+export default function ClipCard({ NFT, isOnLandingPage }) {
   const router = useRouter()
 
   const { clip, description, game, itemId, name, owner, price, seller, tag, thumbnail } = NFT
@@ -17,7 +17,7 @@ export default function ClipCard({ NFT }) {
   const formattedAddress = `${seller.charAt(0)}${seller.charAt(1)}${seller.charAt(2)}${seller.charAt(3)}....${seller.charAt(addressLength - 4)}${seller.charAt(addressLength - 3)}${seller.charAt(addressLength - 2)}${seller.charAt(addressLength - 1)}`
 
   return (
-    <div className='bg-gray-light py-1 px-1 rounded-xl'>
+    <div className={`bg-gray-light px-2 py-3 rounded-xl ${isOnLandingPage && 'w-1/3'}`}>
       <div className='w-full h-40 relative'>
         <Image
           className='cursor-pointer'
@@ -42,7 +42,7 @@ export default function ClipCard({ NFT }) {
           </div>
         </div>
         <div className='my-2 w-full flex flex-row justify-between items-center'>
-          <button onClick={goToNFT} className='bg-primary text-black text-sm px-2 py-1 font-semibold rounded-lg'>Buy Now</button>
+          <button onClick={goToNFT} className='bg-primary text-black text-sm px-2 py-1 font-semibold rounded-lg'>View NFT</button>
           <FiHeart className='text-red text-base cursor-pointer' />
         </div>
       </div>
