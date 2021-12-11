@@ -15,16 +15,31 @@ import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 
 import Navbar from '../../components/common/Navbar'
+import { useState } from 'react'
 
-export default function NFTPage({ NFTs }) {
+export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
   const router = useRouter()
   const { nftId } = router.query
   console.log(nftId);
 
+  let showBuyButton = true
+
   console.log(NFTs);
 
-  const theNFT = NFTs.find(x => x.itemId == nftId)
-  console.log(theNFT);
+  let theNFT = NFTs.find(x => x.itemId == nftId)
+
+  if (!theNFT) {
+    theNFT = ownedNFTs.find(x => x.itemId == nftId)
+    if (theNFT) showBuyButton = false
+  }
+  if (!theNFT) {
+    theNFT = createdNFTs.find(x => x.itemId == nftId)
+    if (theNFT) showBuyButton = false
+  }
+  if (!theNFT) {
+    theNFT = soldNFTs.find(x => x.itemId == nftId)
+    if (theNFT) showBuyButton = false
+  }
 
   async function buyNft(nft) {
     const web3Modal = new Web3Modal()
@@ -79,6 +94,7 @@ export default function NFTPage({ NFTs }) {
             <h6 className='my-1 text-gray-mute text-lg font-semibold'>{game}</h6>
             <h1 className='my-1 text-2xl text-white font-bold'>{name}</h1>
             <h6 className='my-1 text-gray-mute'>Created by <span className='text-primary text-xs'>{seller}</span></h6>
+            <h6 className='my-1 text-gray-mute'>Owned by <span className='text-primary text-xs'>{owner}</span></h6>
             <div className='my-1 w-1/2 flex flex-row text-base justify-between items-center'>
               <h6 className='text-white '>
                 <FaRegDotCircle className='text-yellow inline mx-1' />
@@ -91,7 +107,7 @@ export default function NFTPage({ NFTs }) {
             </div>
             <p className='my-1 text-lg text-white font-semibold'>{description}</p>
             <h3 className='my-1 text-white text-xl'>{price} ETH <span className='text-gray-mute'>($0.1368)</span></h3>
-            <button className='my-1 w-1/3 bg-primary text-black text-lg px-2 py-1 font-semibold rounded-lg'>Buy Now</button>
+            {showBuyButton && <button onClick={() => buyNft(theNFT)} className='my-1 w-1/3 bg-primary text-black text-lg px-2 py-1 font-semibold rounded-lg'>Buy Now</button>}
           </div>
         </div>
       </div>

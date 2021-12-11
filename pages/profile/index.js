@@ -2,10 +2,11 @@ import Head from 'next/head'
 import Image from 'next/Image'
 import { useState } from 'react'
 import Navbar from '../../components/common/Navbar'
+import ClipCard from '../../components/explore/ClipCard'
 
 import pfp from '../../public/pfp.png'
 
-export default function Profile({ ownedNFTs, createdNFTs, soldNFTs }) {
+export default function Profile({ ownedNFTs, createdNFTs, soldNFTs, walletAddress }) {
   const [tab, setTab] = useState('owned')
 
   return (
@@ -17,39 +18,50 @@ export default function Profile({ ownedNFTs, createdNFTs, soldNFTs }) {
       </Head>
       <div className='h-screen flex flex-col overflow-hidden'>
         <Navbar />
-        <div className='flex flex-row text-center overflow-hidden'>
-          <div className='w-1/5 flex flex-col items-start text-left border-r-2 border-gray-light px-6 pt-4'>
-            <ProfileInfo />
-          </div>
-          <div className='w-4/5 px-6 pt-4 overflow-y-scroll'>
-            <MyNFTs tab={tab} setTab={setTab} ownedNFTs={ownedNFTs} createdNFTs={createdNFTs} soldNFTs={soldNFTs} />
-          </div>
+        <div className='flex h-full flex-row text-center overflow-hidden'>
+          {walletAddress ? <>
+            <div className='w-1/4 h-full text-center py-12 px-6'>
+              <ProfileInfo
+                totalOwned={ownedNFTs.length}
+                totalCreated={createdNFTs.length}
+                totalSold={soldNFTs.length}
+                walletAddress={walletAddress}
+              />
+            </div>
+            <div className='w-3/4 px-6 pt-4 overflow-y-scroll'>
+              <MyNFTs
+                tab={tab}
+                setTab={setTab}
+                ownedNFTs={ownedNFTs}
+                createdNFTs={createdNFTs}
+                soldNFTs={soldNFTs}
+              />
+            </div>
+          </> : <h1 className='m-auto text-center text-xl text-primary'>Connect your MetaMask wallet to access this page.</h1>}
         </div>
       </div>
     </>
   )
 }
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ walletAddress, totalOwned, totalCreated, totalSold }) => {
   return (
-    <>
-      <div className='my-3 rounded-lg'>
+    <div className='h-full w-full p-2 flex flex-col items-center justify-evenly rounded-lg bg-gray-light'>
+      <div>
         <Image
-          className='cursor-pointer'
+          className='mt-3 cursor-pointer'
           src={pfp}
-          width={180}
-          height={180}
+          width={120}
+          height={120}
         />
+        <h6 className='mt-3 text-gray-mute font-semibold text-xs'>{walletAddress}</h6>
       </div>
-      <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Description</h6>
-      <p className='mb-3 text-primary text-sm'>Temporary shit</p>
-      <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Minted</h6>
-      <p className='mb-3 text-primary text-sm'>45K</p>
-      <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
-      <p className='mb-3 text-primary text-sm'>29K</p>
-      <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Creators</h6>
-      <p className='mb-3 text-primary text-sm'>8.4K</p>
-    </>
+      <div className='w-4/5'>
+        <div className='flex flex-row justify-between mb-3 text-white text-base font-semibold'><span>Total Owned</span><span>{totalOwned}</span></div>
+        <div className='flex flex-row justify-between mb-3 text-white text-base font-semibold'><span>Total Created</span><span>{totalCreated}</span></div>
+        <div className='flex flex-row justify-between mb-3 text-white text-base font-semibold'><span>Total Sold</span><span>{totalSold}</span></div>
+      </div >
+    </div >
   )
 }
 

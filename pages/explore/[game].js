@@ -5,7 +5,7 @@ import Navbar from '../../components/common/Navbar'
 import valorantlogo from '../../public/valorant-logo.svg'
 import csgologo from '../../public/csgo-logo.png'
 import fortnitelogo from '../../public/fortnite-logo.jpg'
-import { CSGO_DESCRIPTION, CSGO_GAME_ID, FORTNITE_DESCRIPTION, FORTNITE_GAME_ID, GAME_KEYS, VALORANT_DESCRIPTION, VALORANT_GAME_ID } from '../../constants'
+import { CSGO_DESCRIPTION, CSGO_GAME_ID, FORTNITE_DESCRIPTION, FORTNITE_GAME_ID, GAME_KEYS, GAME_NAMES, VALORANT_DESCRIPTION, VALORANT_GAME_ID } from '../../constants'
 import ClipCard from '../../components/explore/ClipCard'
 
 export default function Game({ NFTs }) {
@@ -20,6 +20,8 @@ export default function Game({ NFTs }) {
     //404 not found
   }
 
+  const thisGameNFTs = NFTs.filter(NFT => NFT.game === GAME_NAMES[gameId])
+
   return (
     <>
       <Head>
@@ -31,7 +33,7 @@ export default function Game({ NFTs }) {
         <Navbar />
         <div className='flex flex-row text-center overflow-hidden'>
           <div className='w-1/5 flex flex-col items-start text-left border-r-2 border-gray-light px-6 pt-4'>
-            <Sidebar gameId={gameId} />
+            <Sidebar gameId={gameId} clipsForSale={thisGameNFTs.length} />
           </div>
           <div className='w-4/5 px-6 pt-4 overflow-y-scroll'>
             <div className='flex flex-row w-full justify-between'>
@@ -41,9 +43,10 @@ export default function Game({ NFTs }) {
                 <button className='px-12 ml-2 py-2 bg-gray-light text-primary rounded-lg'>Sort</button>
               </div>
             </div>
-            <div className='my-6 mx-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-              {NFTs.map((NFT) => <ClipCard NFT={NFT} />)}
-            </div>
+            {thisGameNFTs.length ?
+              <div className='my-6 mx-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
+                {thisGameNFTs.map((NFT) => <ClipCard NFT={NFT} />)}
+              </div> : <h1 className='text-center text-xl text-primary'>No NFTs found.</h1>}
           </div>
         </div>
       </div>
@@ -51,7 +54,7 @@ export default function Game({ NFTs }) {
   )
 }
 
-const Sidebar = ({ gameId }) => {
+const Sidebar = ({ gameId, clipsForSale }) => {
   switch (gameId) {
     case VALORANT_GAME_ID:
       return (
@@ -66,12 +69,12 @@ const Sidebar = ({ gameId }) => {
           </div>
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Description</h6>
           <p className='mb-3 text-primary text-sm'>{VALORANT_DESCRIPTION}</p>
-          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Minted</h6>
-          <p className='mb-3 text-primary text-sm'>45K</p>
-          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
+          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips For Sale</h6>
+          <p className='mb-3 text-primary text-sm'>{clipsForSale}</p>
+          {/* <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
           <p className='mb-3 text-primary text-sm'>29K</p>
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Creators</h6>
-          <p className='mb-3 text-primary text-sm'>8.4K</p>
+          <p className='mb-3 text-primary text-sm'>8.4K</p> */}
         </>
       )
 
@@ -88,12 +91,12 @@ const Sidebar = ({ gameId }) => {
           </div>
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Description</h6>
           <p className='mb-3 text-primary text-sm'>{CSGO_DESCRIPTION}</p>
-          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Minted</h6>
-          <p className='mb-3 text-primary text-sm'>45K</p>
-          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
+          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips For Sale</h6>
+          <p className='mb-3 text-primary text-sm'>{clipsForSale}</p>
+          {/* <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
           <p className='mb-3 text-primary text-sm'>29K</p>
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Creators</h6>
-          <p className='mb-3 text-primary text-sm'>8.4K</p>
+          <p className='mb-3 text-primary text-sm'>8.4K</p> */}
         </>
       )
 
@@ -110,12 +113,12 @@ const Sidebar = ({ gameId }) => {
           </div>
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Description</h6>
           <p className='mb-3 text-primary text-sm'>{FORTNITE_DESCRIPTION}</p>
-          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Minted</h6>
-          <p className='mb-3 text-primary text-sm'>45K</p>
-          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
+          <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips For Sale</h6>
+          <p className='mb-3 text-primary text-sm'>{clipsForSale}</p>
+          {/* <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Clips Sold</h6>
           <p className='mb-3 text-primary text-sm'>29K</p>
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>Creators</h6>
-          <p className='mb-3 text-primary text-sm'>8.4K</p>
+          <p className='mb-3 text-primary text-sm'>8.4K</p> */}
         </>
       )
 

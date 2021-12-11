@@ -20,9 +20,11 @@ function MyApp({ Component, pageProps }) {
   const [createdNfts, setCreatedNfts] = useState([])
   const [soldNfts, setSoldNfts] = useState([])
 
+  const [walletAddress, setWalletAddress] = useState(null)
+
   useEffect(() => {
     loadNFTs()
-    loadOwnedNFTs()
+    loadMyNFTs()
   }, [])
 
   async function loadNFTs() {
@@ -54,20 +56,24 @@ function MyApp({ Component, pageProps }) {
     setIsLoaded(true)
   }
 
-  async function loadOwnedNFTs() {
+  async function loadMyNFTs() {
     const web3Modal = new Web3Modal({
       network: "mainnet",
       cacheProvider: true,
     })
     const connection = await web3Modal.connect()
+
+    if (connection.selectedAddress) setWalletAddress(connection.selectedAddress)
+
     const provider = new ethers.providers.Web3Provider(connection)
     const signer = provider.getSigner()
 
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
-    const data = await marketContract.fetchMyNFTs()
+    const myNFTsData = await marketContract.fetchMyNFTs()
+    const createdNFTsData = await marketContract.fetchItemsCreated()
 
-    const items = await Promise.all(data.map(async i => {
+    const myNFTItems = await Promise.all(myNFTsData.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
@@ -86,23 +92,7 @@ function MyApp({ Component, pageProps }) {
       return item
     }))
 
-    setOwnedNfts(items)
-  }
-
-  async function loadCreatedNFTs() {
-    const web3Modal = new Web3Modal({
-      network: "mainnet",
-      cacheProvider: true,
-    })
-    const connection = await web3Modal.connect()
-    const provider = new ethers.providers.Web3Provider(connection)
-    const signer = provider.getSigner()
-
-    const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
-    const data = await marketContract.fetchItemsCreated()
-
-    const items = await Promise.all(data.map(async i => {
+    const createdNFTItems = await Promise.all(createdNFTsData.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId)
       const meta = await axios.get(tokenUri)
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether')
@@ -120,13 +110,21 @@ function MyApp({ Component, pageProps }) {
       }
       return item
     }))
-    /* create a filtered array of items that have been sold */
-    const soldItems = items.filter(i => i.sold)
+
+    setOwnedNfts(myNFTItems)
+    const soldItems = createdNFTItems.filter(i => i.sold)
     setSoldNfts(soldItems)
-    setCreatedNfts(items)
+    setCreatedNfts(createdNFTItems)
   }
 
-  return <Component {...pageProps} NFTs={nfts} createdNFTs={createdNfts} ownedNFTs={ownedNfts} soldNFTs={soldNfts} />
+  return <Component
+    {...pageProps}
+    NFTs={nfts}
+    createdNFTs={createdNfts}
+    ownedNFTs={ownedNfts}
+    soldNFTs={soldNfts}
+    walletAddress={walletAddress}
+  />
 }
 
 export default MyApp
