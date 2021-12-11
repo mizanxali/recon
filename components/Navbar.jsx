@@ -7,7 +7,7 @@ import logo from '../public/recon.png'
 
 export default function Navbar() {
   return (
-    <div className='flex flex-row justify-between items-center bg-primary text-black px-10 h-14'>
+    <div className='flex flex-row justify-between items-center bg-primary text-black px-10 h-14 drop-shadow-md'>
       <Link href='/'>
         <Image
           className='cursor-pointer'
