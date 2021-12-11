@@ -7,7 +7,7 @@ import logo from '../public/recon.png'
 
 export default function Navbar() {
   return (
-    <div className='flex flex-row justify-between items-center bg-primary text-black px-2'>
+    <div className='flex flex-row justify-between items-center bg-primary text-black px-10 h-14'>
       <Link href='/'>
         <Image
           className='cursor-pointer'
@@ -18,16 +18,16 @@ export default function Navbar() {
       </Link>
       <div className='hidden md:flex flex-row items-center'>
         <Link href='/explore'>
-          <a className='hover:text-white mx-3 text-lg font-semibold'>Explore</a>
-        </Link>
-        <Link href='/create'>
-          <a className='hover:text-white mx-3 text-lg font-semibold'>Create</a>
+          <a className='hover:text-white mx-3 text-lg font-bold'>Explore</a>
         </Link>
         <Link href='/about'>
-          <a className='hover:text-white mx-3 text-lg font-semibold'>About</a>
+          <a className='hover:text-white mx-3 text-lg font-bold'>About Us</a>
+        </Link>
+        <Link href='/create'>
+          <a className='hover:text-white mx-3 text-lg font-bold'>Create</a>
         </Link>
         <Link href='/profile'>
-          <CgProfile className='cursor-pointer hover:text-white block text-2xl mx-3' />
+          <CgProfile className='cursor-pointer font-bold hover:text-white block text-2xl mx-3' />
         </Link>
       </div>
     </div>

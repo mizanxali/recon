@@ -14,7 +14,6 @@ export default function Explore() {
         </Head>
         <h1 className='mx-auto my-4 text-white text-4xl font-bold'>About Us</h1>
       </div>
-      <Footer />
     </>
   )
 }

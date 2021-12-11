@@ -4,7 +4,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      primary: '#A4E0B2',
+      primary: '#F3AF02',
       white: '#fff',
       black: '#000',
       red: '#FF4848',
@@ -14,14 +14,14 @@ module.exports = {
         dark: '#19191a',
         DEFAULT: '#222222',
         light: '#242424',
-        mute: '#BEBEBE'
+        mute: '#AEAEAE',
       },
       valorant: '#FF4655',
       csgo: '#E8B500',
       fortnite: '#A809DF',
     },
     fontFamily: {
-      'inter': ['Montserrat', 'sans-serif'],
+      'montserrat': ['Montserrat', 'sans-serif'],
     },
     fontSize: {
       '3xs': '0.675rem',

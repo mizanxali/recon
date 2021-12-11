@@ -16,7 +16,7 @@ class MyDocument extends Document {
             href="https://video-react.github.io/assets/video-react.css"
           />
         </Head>
-        <body className='bg-black font-montserrat'>
+        <body className='bg-gradient-to-b from-black to-gray font-montserrat'>
           <Main />
           <NextScript />
         </body>

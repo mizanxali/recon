@@ -73,6 +73,13 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
 
   const { clip, description, game, itemId, name, owner, price, seller, tag, thumbnail } = theNFT
 
+  const sellerAddressLength = seller.length
+  const sellerFormattedAddress = `${seller.charAt(0)}${seller.charAt(1)}${seller.charAt(2)}${seller.charAt(3)}....${seller.charAt(sellerAddressLength - 4)}${seller.charAt(sellerAddressLength - 3)}${seller.charAt(sellerAddressLength - 2)}${seller.charAt(sellerAddressLength - 1)}`
+  const ownerAddressLength = owner.length
+  const ownerFormattedAddress = `${owner.charAt(0)}${owner.charAt(1)}${owner.charAt(2)}${owner.charAt(3)}....${owner.charAt(ownerAddressLength - 4)}${owner.charAt(ownerAddressLength - 3)}${owner.charAt(ownerAddressLength - 2)}${owner.charAt(ownerAddressLength - 1)}`
+  const showOwnerAddress = owner !== '0x0000000000000000000000000000000000000000'
+  const showSellerAddress = !showOwnerAddress
+
   return (
     <>
       <Head>
@@ -83,20 +90,20 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
       <div className='h-screen flex flex-col overflow-hidden'>
         <Navbar />
         <div className='flex flex-col md:flex-row'>
-          <div className='w-2/3 p-6'>
+          <div className='w-2/3 border-2 border-primary m-5 rounded-lg p-1'>
             <Player
               playsInline
               poster={thumbnail}
               src={clip}
             />
           </div>
-          <div className='w-1/3 flex flex-col justify-center px-8'>
-            <h6 className='my-1 text-gray-mute text-lg font-semibold'>{game}</h6>
-            <h1 className='my-1 text-2xl text-white font-bold'>{name}</h1>
-            <h6 className='my-1 text-gray-mute'>Created by <span className='text-primary text-xs'>{seller}</span></h6>
-            <h6 className='my-1 text-gray-mute'>Owned by <span className='text-primary text-xs'>{owner}</span></h6>
-            <div className='my-1 w-1/2 flex flex-row text-base justify-between items-center'>
-              <h6 className='text-white '>
+          <div className='w-1/3 flex flex-col justify-center px-10'>
+            <h6 className='my-2 text-gray-mute text-lg font-semibold'>{game}</h6>
+            <h1 className='mb-2 text-2xl text-white font-bold'>{name}</h1>
+            <div className='my-2 w-full flex flex-row text-base justify-between items-center font-semibold'>
+              {showSellerAddress && <h6 className='my-2 text-gray-mute'>Created by <span className='text-primary text-xs'>{sellerFormattedAddress}</span></h6>}
+              {showOwnerAddress && <h6 className='my-2 text-gray-mute'>Owned by <span className='text-primary text-xs'>{ownerFormattedAddress}</span></h6>}
+              <h6 className='text-gray-mute'>
                 <FaRegDotCircle className='text-yellow inline mx-1' />
                 {tag}
               </h6>
@@ -105,9 +112,10 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
                 167
               </h6>
             </div>
-            <p className='my-1 text-lg text-white font-semibold'>{description}</p>
-            <h3 className='my-1 text-white text-xl'>{price} ETH <span className='text-gray-mute'>($0.1368)</span></h3>
-            {showBuyButton && <button onClick={() => buyNft(theNFT)} className='my-1 w-1/3 bg-primary text-black text-lg px-2 py-1 font-semibold rounded-lg'>Buy Now</button>}
+            <p className='my-2 text-lg text-white font-semibold'>{description}</p>
+            <h6 className='mt-2 text-gray-mute text-lg font-semibold'>Price</h6>
+            <h3 className='my-2 text-white text-xl font-bold'>{price} MATIC</h3>
+            {showBuyButton && <button onClick={() => buyNft(theNFT)} className='my-2 w-1/3 bg-primary text-black text-lg px-2 py-1 font-bold rounded-lg'>Buy Now</button>}
           </div>
         </div>
       </div>
