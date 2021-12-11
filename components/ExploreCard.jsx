@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import valorantlogo from '../../public/valorant-logo.svg'
-import csgologo from '../../public/csgo-logo.png'
-import fortnitelogo from '../../public/fortnite-logo.jpg'
+import valorantlogo from '../public/valorant-logo.svg'
+import csgologo from '../public/csgo-logo.png'
+import fortnitelogo from '../public/fortnite-logo.jpg'
 import { CSGO_DESCRIPTION, CSGO_GAME_ID, FORTNITE_DESCRIPTION, FORTNITE_GAME_ID, GAME_KEYS, VALORANT_DESCRIPTION, VALORANT_GAME_ID } from '../../constants'
 
 export default function ExploreCard({ gameId }) {

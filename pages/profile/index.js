@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/Image'
 import { useState } from 'react'
-import Navbar from '../../components/common/Navbar'
-import ClipCard from '../../components/explore/ClipCard'
+import Navbar from '../../components/Navbar'
+import ClipCard from '../../components/ClipCard'
 
 import pfp from '../../public/pfp.png'
 

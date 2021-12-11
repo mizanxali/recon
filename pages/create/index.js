@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Navbar from '../../components/common/Navbar'
+import Navbar from '../../components/Navbar'
 import { FiUpload } from 'react-icons/fi'
 import { BsCheck2Square } from 'react-icons/bs'
 import { useState } from 'react'

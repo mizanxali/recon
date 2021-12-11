@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Footer from '../../components/common/Footer'
-import Navbar from '../../components/common/Navbar'
+import Footer from '../../components/Footer'
+import Navbar from '../../components/Navbar'
 
 export default function Explore() {
   return (

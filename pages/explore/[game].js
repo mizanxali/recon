@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import Navbar from '../../components/common/Navbar'
+import Navbar from '../../components/Navbar'
 import valorantlogo from '../../public/valorant-logo.svg'
 import csgologo from '../../public/csgo-logo.png'
 import fortnitelogo from '../../public/fortnite-logo.jpg'
 import { CSGO_DESCRIPTION, CSGO_GAME_ID, FORTNITE_DESCRIPTION, FORTNITE_GAME_ID, GAME_KEYS, GAME_NAMES, VALORANT_DESCRIPTION, VALORANT_GAME_ID } from '../../constants'
-import ClipCard from '../../components/explore/ClipCard'
+import ClipCard from '../../components/ClipCard'
 
 export default function Game({ NFTs }) {
   console.log(NFTs);

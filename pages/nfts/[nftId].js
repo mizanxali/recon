@@ -14,7 +14,7 @@ import {
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 
-import Navbar from '../../components/common/Navbar'
+import Navbar from '../../components/Navbar'
 import { useState } from 'react'
 
 export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {

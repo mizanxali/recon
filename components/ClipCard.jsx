@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import router, { useRouter } from 'next/router'
 import { FiHeart } from 'react-icons/fi'
-import testthumbnail from '../../public/test-thumbnail.png'
+import testthumbnail from '../public/test-thumbnail.png'
 
 export default function ClipCard({ NFT, isOnLandingPage }) {
   const router = useRouter()

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { CgProfile } from 'react-icons/cg'
 import { IoWalletOutline } from 'react-icons/io5'
 
-import logo from '../../public/recon.png'
+import logo from '../public/recon.png'
 
 export default function Navbar() {
   return (

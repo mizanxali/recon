@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Navbar from '../../components/common/Navbar'
-import ExploreCard from '../../components/explore/ExploreCard'
+import Navbar from '../../components/Navbar'
+import ExploreCard from '../../components/ExploreCard'
 import { CSGO_GAME_ID, FORTNITE_GAME_ID, VALORANT_GAME_ID } from '../../constants'
 
 export default function Explore() {
