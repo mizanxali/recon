@@ -124,6 +124,7 @@ function MyApp({ Component, pageProps }) {
     ownedNFTs={ownedNfts}
     soldNFTs={soldNfts}
     walletAddress={walletAddress}
+    isLoaded={isLoaded}
   />
 }
 

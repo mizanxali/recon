@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
@@ -7,13 +6,8 @@ import ClipCard from '../components/ClipCard'
 import { GiWallet } from 'react-icons/gi'
 import { BsCollectionPlayFill, BsArrowRight } from 'react-icons/bs'
 import { MdManageSearch } from 'react-icons/md'
-import valorantgif from '../public/valorant-gif.webp'
-import csgogif from '../public/csgo-gif.webp'
-import fortnitegif from '../public/fortnite-gif.webp'
 import TrendingGameCard from '../components/TrendingGameCard'
 import { GAME_NAMES } from '../constants'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { FiArrowRight } from 'react-icons/fi'
 
 export default function Home({ NFTs }) {
@@ -39,17 +33,6 @@ export default function Home({ NFTs }) {
           </section>
           <section className='h-full w-1/2 bg-primary flex flex-col items-center justify-center'>
             {randomNFT && <ClipCard NFT={randomNFT} isOnLandingPage={true} />}
-            {/* <Carousel infiniteLoop={true} autoPlay={true} showStatus={false} showArrows={false} showIndicators={false}>
-              <div className='w-full h-full'>
-                <Image src={valorantgif} width={500} height={250} />
-              </div>
-              <div className='w-full h-full'>
-                <Image src={csgogif} width={500} height={250} />
-              </div>
-              <div className='w-full h-full'>
-                <Image src={fortnitegif} width={500} height={250} />
-              </div>
-            </Carousel> */}
           </section>
         </main>
         <div className='py-8 w-5/6 mx-auto'>

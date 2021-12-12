@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Player } from 'video-react'
 import 'video-react/dist/video-react.css'
@@ -8,11 +7,8 @@ import { FaRegDotCircle } from 'react-icons/fa'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
-import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
-
 import Navbar from '../../components/Navbar'
-import { useState } from 'react'
 
 export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
   const router = useRouter()
@@ -101,7 +97,7 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
               {showSellerAddress && <h6 className='my-2 text-gray-mute'>Created by <span className='text-primary text-xs'>{sellerFormattedAddress}</span></h6>}
               {showOwnerAddress && <h6 className='my-2 text-gray-mute'>Owned by <span className='text-primary text-xs'>{ownerFormattedAddress}</span></h6>}
               <h6 className='text-gray-mute'>
-                <FaRegDotCircle className='text-yellow inline mx-1' />
+                {tag === 'Casual' ? <FaRegDotCircle className='text-blue inline mx-1' /> : <FaRegDotCircle className='text-yellow inline mx-1' />}
                 {tag}
               </h6>
               <h6 className='text-gray-mute'>

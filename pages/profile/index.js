@@ -7,14 +7,16 @@ import { AiOutlineYoutube } from 'react-icons/ai'
 import { FiTwitter, FiTwitch } from 'react-icons/fi'
 import { MdOutlineEdit } from 'react-icons/md'
 
-import pfp from '../../public/pfp.png'
+import logo from '../../public/recon.png'
 
 export default function Profile({ ownedNFTs, createdNFTs, soldNFTs, walletAddress }) {
   const [tab, setTab] = useState('owned')
 
+  let formattedAddress = ''
+
   if (walletAddress) {
     const addressLength = walletAddress.length
-    const formattedAddress = `${walletAddress.charAt(0)}${walletAddress.charAt(1)}${walletAddress.charAt(2)}${walletAddress.charAt(3)}....${walletAddress.charAt(addressLength - 4)}${walletAddress.charAt(addressLength - 3)}${walletAddress.charAt(addressLength - 2)}${walletAddress.charAt(addressLength - 1)}`
+    formattedAddress = `${walletAddress.charAt(0)}${walletAddress.charAt(1)}${walletAddress.charAt(2)}${walletAddress.charAt(3)}....${walletAddress.charAt(addressLength - 4)}${walletAddress.charAt(addressLength - 3)}${walletAddress.charAt(addressLength - 2)}${walletAddress.charAt(addressLength - 1)}`
   }
 
   return (
@@ -58,14 +60,14 @@ export default function Profile({ ownedNFTs, createdNFTs, soldNFTs, walletAddres
 
 const ProfileInfo = ({ walletAddress, totalOwned, totalCreated, totalSold }) => {
   return (
-    <div className='w-80 absolute top-36 left-14 z-10 rounded-xl bg-gray-light drop-shadow-2xl border-2 border-black'>
+    <div className='w-80 absolute top-36 left-10 z-10 rounded-xl bg-gray-light drop-shadow-2xl border-2 border-black'>
       <div className='p-2 flex flex-col items-center justify-evenly'>
         <div className='my-5 flex flex-col items-center justify-center'>
           <Image
-            className='mt-3 cursor-pointer'
-            src={pfp}
-            width={120}
-            height={120}
+            className='mt-3 cursor-pointer bg-primary rounded-lg'
+            src={logo}
+            width={130}
+            height={40}
           />
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>{walletAddress}</h6>
         </div>

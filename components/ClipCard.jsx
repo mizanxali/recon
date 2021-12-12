@@ -1,7 +1,6 @@
 import Image from 'next/image'
-import router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { FiHeart } from 'react-icons/fi'
-import testthumbnail from '../public/test-thumbnail.png'
 import { FaRegDotCircle } from 'react-icons/fa'
 
 export default function ClipCard({ NFT, isOnLandingPage }) {
@@ -19,7 +18,7 @@ export default function ClipCard({ NFT, isOnLandingPage }) {
   return (
     <div className={`bg-gray-light px-2 py-3 rounded-xl ${isOnLandingPage && 'w-1/3'}`}>
       <div className='w-full h-40 relative'>
-        <FaRegDotCircle className='text-blue text-xl z-10 top-1 left-0 absolute' />
+        {tag === 'Casual' ? <FaRegDotCircle className='text-blue text-xl z-10 top-1 left-0 absolute' /> : <FaRegDotCircle className='text-yellow text-xl z-10 top-1 left-0 absolute' />}
         <div className='z-0'>
           <Image
             className='z-0'
