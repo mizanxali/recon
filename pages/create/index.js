@@ -108,7 +108,7 @@ export default function Create() {
     const signer = provider.getSigner()
 
     /* next, create the item */
-    let contract = new ethers.Contract(nftaddress, NFT.abi, signer)
+    let contract = new ethers.Contract(process.env.NEXT_PUBLIC_NFT_ADDRESS, NFT.abi, signer)
     let transaction = await contract.createToken(url)
     let tx = await transaction.wait()
     let event = tx.events[0]
@@ -118,11 +118,11 @@ export default function Create() {
     const thePrice = ethers.utils.parseUnits(price, 'ether')
 
     /* then list the item for sale on the marketplace */
-    contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
+    contract = new ethers.Contract(process.env.NEXT_PUBLIC_NFT_MARKET_ADDRESS, Market.abi, signer)
     let listingPrice = await contract.getListingPrice()
     listingPrice = listingPrice.toString()
 
-    transaction = await contract.createMarketItem(nftaddress, tokenId, thePrice, { value: listingPrice })
+    transaction = await contract.createMarketItem(process.env.NEXT_PUBLIC_NFT_ADDRESS, tokenId, thePrice, { value: listingPrice })
     await transaction.wait()
     router.push('/')
   }

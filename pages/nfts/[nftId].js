@@ -7,10 +7,6 @@ import { FaRegDotCircle } from 'react-icons/fa'
 import { ethers } from 'ethers'
 import Web3Modal from 'web3modal'
 
-import {
-  nftaddress, nftmarketaddress
-} from '../../config'
-
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 
@@ -47,10 +43,10 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
     const provider = new ethers.providers.Web3Provider(connection)
 
     const signer = provider.getSigner()
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
+    const contract = new ethers.Contract(process.env.NEXT_PUBLIC_NFT_MARKET_ADDRESS, Market.abi, signer)
 
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
-    const transaction = await contract.createMarketSale(nftaddress, nft.itemId, {
+    const transaction = await contract.createMarketSale(process.env.NEXT_PUBLIC_NFT_ADDRESS, nft.itemId, {
       value: price
     })
     await transaction.wait()
