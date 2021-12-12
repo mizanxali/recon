@@ -28,7 +28,7 @@ export default function Explore() {
             <span className='hover:text-primary underline text-white'>Aayush Mishra</span>
           </a> and <a href='https://twitter.com/mizanxali'>
             <span className='hover:text-primary underline text-white'>Mizan Ali</span>
-          </a> as a part of Polygon's BUIDL IT Hackathon.
+          </a> as a part of Polygon BUIDL IT Hackathon.
         </h6>
       </div>
     </div>
