@@ -10,3 +10,21 @@ This was our first web3 project. We had no idea how the blockchain and smart con
 
 ## Project Gallery
 
+Figma Design File - [Recon](https://www.figma.com/file/JljZwlkbeU804WhezBYY0k/Recon?node-id=229%3A164)
+
+</br>
+<p align="center">
+<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot1.png" alt="drawing" width="700"/>
+</p>
+<p align="center">
+<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot2.png" alt="drawing" width="700"/>
+</p>
+<p align="center">
+<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot3.png" alt="drawing" width="700"/>
+</p>
+<p align="center">
+<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot4.png" alt="drawing" width="700"/>
+</p>
+<p align="center">
+<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot5.png" alt="drawing" width="700"/>
+</p>
