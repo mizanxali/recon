@@ -96,7 +96,7 @@ const MyNFTs = ({ tab, setTab, ownedNFTs, createdNFTs, soldNFTs }) => {
             <button onClick={() => setTab('sold')} className='text-xl px-12 ml-2 py-2 text-white font-bold rounded-xl'>Sold</button>
           </div>
           <div className='my-6 mx-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-            {ownedNFTs.map((NFT) => <ClipCard NFT={NFT} />)}
+            {ownedNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
           </div>
         </>
       )
@@ -109,7 +109,7 @@ const MyNFTs = ({ tab, setTab, ownedNFTs, createdNFTs, soldNFTs }) => {
             <button onClick={() => setTab('sold')} className='text-xl px-12 ml-2 py-2 text-white font-bold rounded-xl'>Sold</button>
           </div>
           <div className='my-6 mx-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-            {createdNFTs.map((NFT) => <ClipCard NFT={NFT} />)}
+            {createdNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
           </div>
         </>
       )
@@ -122,7 +122,7 @@ const MyNFTs = ({ tab, setTab, ownedNFTs, createdNFTs, soldNFTs }) => {
             <button className='text-xl px-12 ml-2 py-2 bg-primary text-black font-bold rounded-xl'>Sold</button>
           </div>
           <div className='my-6 mx-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8'>
-            {soldNFTs.map((NFT) => <ClipCard NFT={NFT} />)}
+            {soldNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
           </div>
         </>
       )

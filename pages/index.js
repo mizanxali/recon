@@ -72,7 +72,7 @@ export default function Home({ NFTs }) {
         <div className='py-8 w-5/6 mx-auto'>
           <h1 className='text-2xl text-primary text-center font-semibold'>Trending Games</h1>
           <div className='my-6 grid grid-cols-1 md:grid-cols-3 gap-4'>
-            {GAME_NAMES.map((game, i) => <TrendingGameCard gameId={i} />)}
+            {GAME_NAMES.map((game, i) => <TrendingGameCard key={i} gameId={i} />)}
           </div>
         </div>
       </div>
