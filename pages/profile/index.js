@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Image from 'next/Image'
+import Image from 'next/image'
 import { useState } from 'react'
 import Navbar from '../../components/Navbar'
 import ClipCard from '../../components/ClipCard'
