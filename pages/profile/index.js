@@ -7,7 +7,7 @@ import { AiOutlineYoutube } from 'react-icons/ai'
 import { FiTwitter, FiTwitch } from 'react-icons/fi'
 import { MdOutlineEdit } from 'react-icons/md'
 
-import logo from '../../public/recon.png'
+import pfp from '../../public/pfp.png'
 
 export default function Profile({ ownedNFTs, createdNFTs, soldNFTs, walletAddress }) {
   const [tab, setTab] = useState('owned')
@@ -64,10 +64,10 @@ const ProfileInfo = ({ walletAddress, totalOwned, totalCreated, totalSold }) => 
       <div className='p-2 flex flex-col items-center justify-evenly'>
         <div className='my-5 flex flex-col items-center justify-center'>
           <Image
-            className='mt-3 cursor-pointer bg-primary rounded-lg'
-            src={logo}
-            width={130}
-            height={40}
+            className='mt-3 cursor-pointer'
+            src={pfp}
+            width={115}
+            height={110}
           />
           <h6 className='mt-3 text-gray-mute font-semibold text-lg'>{walletAddress}</h6>
         </div>

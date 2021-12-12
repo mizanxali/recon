@@ -16,7 +16,7 @@ export default function ClipCard({ NFT, isOnLandingPage }) {
   const formattedAddress = `${seller.charAt(0)}${seller.charAt(1)}${seller.charAt(2)}${seller.charAt(3)}....${seller.charAt(addressLength - 4)}${seller.charAt(addressLength - 3)}${seller.charAt(addressLength - 2)}${seller.charAt(addressLength - 1)}`
 
   return (
-    <div className={`bg-gray-light px-2 py-3 rounded-xl ${isOnLandingPage && 'w-1/3'}`}>
+    <div className={`bg-gray-light px-2 py-3 rounded-xl drop-shadow-lg ${isOnLandingPage && 'w-1/3'}`}>
       <div className='w-full h-40 relative'>
         {tag === 'Casual' ? <FaRegDotCircle className='text-blue text-xl z-10 top-1 left-0 absolute' /> : <FaRegDotCircle className='text-yellow text-xl z-10 top-1 left-0 absolute' />}
         <div className='z-0'>
