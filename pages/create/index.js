@@ -188,7 +188,7 @@ export default function Create() {
                 </div>
               </div>
             </div>
-            <h3 className='text-primary text-xl text-left font-semibold my-5'>Listing Price</h3>
+            <h3 className='text-primary text-xl text-left font-semibold my-5'>Listing Price (MATIC)</h3>
             <input type='text' onChange={e => setPrice(e.target.value)} placeholder='Set the base price at which you would like to list this clip....' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
             <hr className='text-gray-mute my-5' />
             <button onClick={onSubmitNFT} className='my-5 float-left bg-primary text-black text-xl px-10 py-2 font-bold rounded-lg'>Create</button>

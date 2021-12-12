@@ -1,6 +1,7 @@
 require('@nomiclabs/hardhat-waffle');
 const fs = require('fs');
 const privateKey = fs.readFileSync('.secret').toString();
+const projectId = fs.readFileSync('.alchemyid').toString();
 
 module.exports = {
   networks: {
@@ -8,7 +9,7 @@ module.exports = {
       chainId: 1337
     },
     mumbai: {
-      url: 'https://rpc-mumbai.matic.today',
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${projectId}`,
       accounts: [privateKey]
     },
     mainnet: {

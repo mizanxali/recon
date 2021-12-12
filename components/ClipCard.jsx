@@ -19,10 +19,10 @@ export default function ClipCard({ NFT, isOnLandingPage }) {
   return (
     <div className={`bg-gray-light px-2 py-3 rounded-xl ${isOnLandingPage && 'w-1/3'}`}>
       <div className='w-full h-40 relative'>
-        <FaRegDotCircle className='text-blue text-xl z-100' />
-        <div className='z-10'>
+        <FaRegDotCircle className='text-blue text-xl z-10 top-1 left-0 absolute' />
+        <div className='z-0'>
           <Image
-            className=''
+            className='z-0'
             src={thumbnail}
             layout='fill'
             objectFit='contain'

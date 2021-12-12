@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   async function loadNFTs() {
-    const provider = new ethers.providers.JsonRpcProvider()
+    const provider = new ethers.providers.JsonRpcProvider('https://polygon-mumbai.g.alchemy.com/v2/SEDsaNI2aHArSTswgw5DVm9GtifvuDW9')
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider)
     const data = await marketContract.fetchMarketItems()
