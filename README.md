@@ -1,15 +1,12 @@
-# Basic Sample Hardhat Project
+# Recon
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+### Recon is a marketplace for gamers to buy and sell gameplay clips as NFTs. Treating gameplay like the art it is.
 
-Try running some of the following tasks:
+## The problem it solves
+There was a time when gaming was considered just a hobby, but times have changed. Gaming and video game content creation is a primary career for millions across the globe. The Indian gaming market is expected to touch a valuation of 3.9 billion USD by 2025. With the exponential rise of the web3 revolution, its intersection with gaming was inevitable. We made it come to life with Recon. Recon is a platform for gamers and video game content creators to generate an extra stream of revenue by selling their gameplay content to their fans in the form of NFTs. Not just that, practically anyone with an awesome gameplay clip of theirs can list it on our platform for other gamers to buy. We believe that gaming is an art form and Recon is built around that same belief.
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+## Challenges we ran into
+This was our first web3 project. We had no idea how the blockchain and smart contracts worked. We learned every single bit of web3 technology from scratch and then implemented it.
+
+## Project Gallery
+
