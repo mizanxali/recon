@@ -10,7 +10,7 @@ export default function TrendingGameCard({ gameId }) {
     case VALORANT_GAME_ID:
       return (
         <Link href={`explore/${GAME_KEYS[gameId]}`}>
-          <div className='bg-gray-light flex flex-row px-2 py-3 cursor-pointer my-4 items-center justify-between rounded-lg'>
+          <div className='bg-gray-light flex flex-row px-2 py-3 cursor-pointer my-0.5 md:my-4 items-center justify-between rounded-lg'>
             <div className='w-16 h-16 bg-valorant rounded-lg flex items-center justify-center p-2'>
               <Image
                 className='cursor-pointer'
@@ -19,7 +19,7 @@ export default function TrendingGameCard({ gameId }) {
                 height={75}
               />
             </div>
-            <div className='w-2/3'><h1 className='font-semibold text-white text-lg text-left'>{GAME_NAMES[gameId]}</h1></div>
+            <div className='w-2/3'><h1 className='font-semibold text-white text-sm md:text-lg text-left'>{GAME_NAMES[gameId]}</h1></div>
           </div>
         </Link>
       )
@@ -27,7 +27,7 @@ export default function TrendingGameCard({ gameId }) {
     case CSGO_GAME_ID:
       return (
         <Link href={`explore/${GAME_KEYS[gameId]}`}>
-          <div className='bg-gray-light flex flex-row px-2 py-3 cursor-pointer my-4 items-center justify-between rounded-lg'>
+          <div className='bg-gray-light flex flex-row px-2 py-3 cursor-pointer my-0.5 md:my-4 items-center justify-between rounded-lg'>
             <div className='w-16 h-16 bg-csgo rounded-lg flex items-center justify-center p-2'>
               <Image
                 className='cursor-pointer'
@@ -36,7 +36,7 @@ export default function TrendingGameCard({ gameId }) {
                 height={50}
               />
             </div>
-            <div className='w-2/3'><h1 className='font-semibold text-white text-lg text-left'>{GAME_NAMES[gameId]}</h1></div>
+            <div className='w-2/3'><h1 className='font-semibold text-white text-sm md:text-lg text-left'>{GAME_NAMES[gameId]}</h1></div>
           </div>
         </Link>
       )
@@ -44,7 +44,7 @@ export default function TrendingGameCard({ gameId }) {
     case FORTNITE_GAME_ID:
       return (
         <Link href={`explore/${GAME_KEYS[gameId]}`}>
-          <div className='bg-gray-light flex flex-row px-2 py-3 cursor-pointer my-4 items-center justify-between rounded-lg'>
+          <div className='bg-gray-light flex flex-row px-2 py-3 cursor-pointer my-0.5 md:my-4 items-center justify-between rounded-lg'>
             <div className='w-16 h-16 bg-fortnite rounded-lg flex items-center justify-center p-2'>
               <Image
                 className='cursor-pointer'
@@ -53,7 +53,7 @@ export default function TrendingGameCard({ gameId }) {
                 height={40}
               />
             </div>
-            <div className='w-2/3'><h1 className='font-semibold text-white text-lg text-left'>{GAME_NAMES[gameId]}</h1></div>
+            <div className='w-2/3'><h1 className='font-semibold text-white text-sm md:text-lg text-left'>{GAME_NAMES[gameId]}</h1></div>
           </div>
         </Link>
       )
