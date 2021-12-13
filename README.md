@@ -27,22 +27,22 @@ Figma Design File - [Recon](https://www.figma.com/file/JljZwlkbeU804WhezBYY0k/Re
 
 </br>
 <p align="center">
-<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot1.png" alt="drawing" width="700"/>
+<img src="https://github.com/mizanxali/recon/blob/main/designs/screenshots/Screenshot1.png" alt="drawing" width="700"/>
 </p>
 <p align="center">
-<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot2.png" alt="drawing" width="700"/>
+<img src="https://github.com/mizanxali/recon/blob/main/designs/screenshots/Screenshot2.png" alt="drawing" width="700"/>
 </p>
 <p align="center">
-<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot3.png" alt="drawing" width="700"/>
+<img src="https://github.com/mizanxali/recon/blob/main/designs/screenshots/Screenshot3.png" alt="drawing" width="700"/>
 </p>
 <p align="center">
-<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot4.png" alt="drawing" width="700"/>
+<img src="https://github.com/mizanxali/recon/blob/main/designs/screenshots/Screenshot4.png" alt="drawing" width="700"/>
 </p>
 <p align="center">
-<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot5.png" alt="drawing" width="700"/>
+<img src="https://github.com/mizanxali/recon/blob/main/designs/screenshots/Screenshot5.png" alt="drawing" width="700"/>
 </p>
 <p align="center">
-<img src="https://github.com/AM1CODES/recon/blob/main/designs/screenshots/Screenshot6.png" alt="drawing" width="700"/>
+<img src="https://github.com/mizanxali/recon/blob/main/designs/screenshots/Screenshot6.png" alt="drawing" width="700"/>
 </p>
 
 ## Try it out here📚
