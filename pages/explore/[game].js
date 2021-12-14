@@ -59,8 +59,6 @@ export default function Game({ NFTs, isLoading }) {
             {isLoading ? <Loader /> : thisGameNFTs.length ?
               <div className='my-6 mx-16 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8'>
                 {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
-                {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
-                {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
               </div> : <h1 className='my-16 text-center text-xl text-primary'>No NFTs found.</h1>}
           </div>
         </div>
