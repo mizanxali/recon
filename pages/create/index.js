@@ -13,7 +13,7 @@ const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 
-export default function Create() {
+export default function Create({ walletAddress }) {
   const router = useRouter()
 
   const [clipFileName, setClipFileName] = useState('')
@@ -128,69 +128,71 @@ export default function Create() {
   }
 
   return (
-    <>
+    <div className='min-h-screen'>
+      <Head>
+        <title>Explore | Recon</title>
+        <meta name='description' content='NFT Marketplace for gamers' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
       <Navbar />
-      <div className='text-center'>
-        <Head>
-          <title>Explore | Recon</title>
-          <meta name='description' content='NFT Marketplace for gamers' />
-          <link rel='icon' href='/favicon.ico' />
-        </Head>
-        <div className='mx-48'>
-          <h1 className='my-8 text-primary text-3xl text-left font-bold'>Create your NFT</h1>
-          <main className='w-full flex flex-row justify-between'>
-            <div>
-              <h3 className='text-xl text-left my-3 font-semibold text-primary'>Upload your clip</h3>
-              <h6 className='text-sm text-left text-gray-mute my-5'>All video file types supported. Max size: 10GB.</h6>
-              <div className='w-96 h-80 flex bg-gray-light rounded-lg border-2 border-primary cursor-pointer' onClick={openClipInput}>
-                <input type='file' id='clip-upload' className='w-full h-full hidden' onChange={onClipUpload} disabled={isUploadClipDisabled} />
-                {isUploadClipDisabled ? <BsCheck2Square className='text-7xl mx-auto my-auto text-primary' /> : <FiUpload className='text-7xl mx-auto my-auto text-primary' />}
+      {walletAddress ? <>
+        <div className='text-center'>
+          <div className='mx-48'>
+            <h1 className='my-8 text-primary text-3xl text-left font-bold'>Create your NFT</h1>
+            <main className='w-full flex flex-row justify-between'>
+              <div>
+                <h3 className='text-xl text-left my-3 font-semibold text-primary'>Upload your clip</h3>
+                <h6 className='text-sm text-left text-gray-mute my-5'>All video file types supported. Max size: 10GB.</h6>
+                <div className='w-96 h-80 flex bg-gray-light rounded-lg border-2 border-primary cursor-pointer' onClick={openClipInput}>
+                  <input type='file' id='clip-upload' className='w-full h-full hidden' onChange={onClipUpload} disabled={isUploadClipDisabled} />
+                  {isUploadClipDisabled ? <BsCheck2Square className='text-7xl mx-auto my-auto text-primary' /> : <FiUpload className='text-7xl mx-auto my-auto text-primary' />}
+                </div>
+                <p className='my-2 text-primary text-sm'>{clipFileName}</p>
               </div>
-              <p className='my-2 text-primary text-sm'>{clipFileName}</p>
-            </div>
-            <div>
-              <h3 className='text-xl text-left my-3 font-semibold text-primary'>Thumbnail</h3>
-              <h6 className='text-sm text-left text-gray-mute my-5'>File types supported: JPEGs, JPGs, PNGs. Max size: 10GB.</h6>
-              <div className='w-96 h-80 flex bg-gray-light rounded-lg border-2 border-primary cursor-pointer' onClick={openThumbnailInput}>
-                <input type='file' id='thumbnail-upload' className='w-full h-full hidden' onChange={onThumbnailUpload} disabled={isUploadThumbnailDisabled} />
-                {isUploadThumbnailDisabled ? <BsCheck2Square className='text-7xl mx-auto my-auto text-primary' /> : <FiUpload className='text-7xl mx-auto my-auto text-primary' />}
+              <div>
+                <h3 className='text-xl text-left my-3 font-semibold text-primary'>Thumbnail</h3>
+                <h6 className='text-sm text-left text-gray-mute my-5'>File types supported: JPEGs, JPGs, PNGs. Max size: 10GB.</h6>
+                <div className='w-96 h-80 flex bg-gray-light rounded-lg border-2 border-primary cursor-pointer' onClick={openThumbnailInput}>
+                  <input type='file' id='thumbnail-upload' className='w-full h-full hidden' onChange={onThumbnailUpload} disabled={isUploadThumbnailDisabled} />
+                  {isUploadThumbnailDisabled ? <BsCheck2Square className='text-7xl mx-auto my-auto text-primary' /> : <FiUpload className='text-7xl mx-auto my-auto text-primary' />}
+                </div>
+                <p className='my-5 text-primary text-sm'>{thumbnailFileName}</p>
               </div>
-              <p className='my-5 text-primary text-sm'>{thumbnailFileName}</p>
-            </div>
-          </main>
-          <div className=''>
-            <h3 className='text-primary text-xl text-left font-semibold my-5'>Name</h3>
-            <input type='text' onChange={e => setName(e.target.value)} placeholder='Every sick clip deserves a great name!' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
-            <h3 className='text-primary text-xl text-left font-semibold my-5'>Description</h3>
-            <textarea onChange={e => setDesc(e.target.value)} placeholder='Tell the world about everything this clip contains.......' rows='6' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
-            <div className='flex flex-row w-full justify-evenly'>
-              <div className='w-1/2'>
-                <h3 className='text-primary text-xl text-left font-semibold my-5'>Game</h3>
-                <div className='drop-shadow-xl mb-5 float-left rounded-lg bg-gray-light px-4'>
-                  <select onChange={e => setGame(e.target.value)} className='px-4 py-2 bg-gray-light text-primary outline-none'>
-                    <option>Valorant</option>
-                    <option>CS:GO</option>
-                    <option>Fortnite</option>
-                  </select>
+            </main>
+            <div className=''>
+              <h3 className='text-primary text-xl text-left font-semibold my-5'>Name</h3>
+              <input type='text' onChange={e => setName(e.target.value)} placeholder='Every sick clip deserves a great name!' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
+              <h3 className='text-primary text-xl text-left font-semibold my-5'>Description</h3>
+              <textarea onChange={e => setDesc(e.target.value)} placeholder='Tell the world about everything this clip contains.......' rows='6' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
+              <div className='flex flex-row w-full justify-evenly'>
+                <div className='w-1/2'>
+                  <h3 className='text-primary text-xl text-left font-semibold my-5'>Game</h3>
+                  <div className='drop-shadow-xl mb-5 float-left rounded-lg bg-gray-light px-4'>
+                    <select onChange={e => setGame(e.target.value)} className='px-4 py-2 bg-gray-light text-primary outline-none'>
+                      <option>Valorant</option>
+                      <option>CS:GO</option>
+                      <option>Fortnite</option>
+                    </select>
+                  </div>
+                </div>
+                <div className='w-1/2'>
+                  <h3 className='text-primary text-xl text-left font-semibold my-5'>Tag</h3>
+                  <div className='drop-shadow-xl mb-5 float-left rounded-lg bg-gray-light px-4'>
+                    <select onChange={e => setTag(e.target.value)} className='px-4 py-2 bg-gray-light text-primary outline-none'>
+                      <option>Competitive</option>
+                      <option>Casual</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-              <div className='w-1/2'>
-                <h3 className='text-primary text-xl text-left font-semibold my-5'>Tag</h3>
-                <div className='drop-shadow-xl mb-5 float-left rounded-lg bg-gray-light px-4'>
-                  <select onChange={e => setTag(e.target.value)} className='px-4 py-2 bg-gray-light text-primary outline-none'>
-                    <option>Competitive</option>
-                    <option>Casual</option>
-                  </select>
-                </div>
-              </div>
+              <h3 className='text-primary text-xl text-left font-semibold my-5'>Listing Price (MATIC)</h3>
+              <input type='text' onChange={e => setPrice(e.target.value)} placeholder='Set the base price at which you would like to list this clip....' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
+              <hr className='text-gray-mute my-5' />
+              <button onClick={onSubmitNFT} className='my-5 float-left bg-primary text-black text-xl px-10 py-2 font-bold rounded-lg'>Create</button>
             </div>
-            <h3 className='text-primary text-xl text-left font-semibold my-5'>Listing Price (MATIC)</h3>
-            <input type='text' onChange={e => setPrice(e.target.value)} placeholder='Set the base price at which you would like to list this clip....' className='drop-shadow-xl mb-5 text-primary mx-auto w-full outline-none bg-gray py-2 px-4 rounded-lg' />
-            <hr className='text-gray-mute my-5' />
-            <button onClick={onSubmitNFT} className='my-5 float-left bg-primary text-black text-xl px-10 py-2 font-bold rounded-lg'>Create</button>
           </div>
         </div>
-      </div>
-    </>
+      </> : <h1 className='my-32 mx-auto text-center text-xl font-bold text-primary'>Connect your MetaMask wallet to access this page.</h1>}
+    </div>
   )
 }

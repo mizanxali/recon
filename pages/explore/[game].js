@@ -10,8 +10,9 @@ import ClipCard from '../../components/ClipCard'
 import { ImSearch } from 'react-icons/im'
 import { FiFilter } from 'react-icons/fi'
 import { MdOutlineSort } from 'react-icons/md'
+import Loader from '../../components/Loader'
 
-export default function Game({ NFTs }) {
+export default function Game({ NFTs, isLoading }) {
   console.log(NFTs);
 
   const router = useRouter()
@@ -55,7 +56,7 @@ export default function Game({ NFTs }) {
                 </button>
               </div>
             </div>
-            {thisGameNFTs.length ?
+            {isLoading ? <Loader /> : thisGameNFTs.length ?
               <div className='my-6 mx-16 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8'>
                 {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
               </div> : <h1 className='text-center text-xl text-primary'>No NFTs found.</h1>}

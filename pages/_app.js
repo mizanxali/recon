@@ -10,7 +10,7 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   const [nfts, setNfts] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const [ownedNfts, setOwnedNfts] = useState([])
   const [createdNfts, setCreatedNfts] = useState([])
@@ -50,7 +50,7 @@ function MyApp({ Component, pageProps }) {
     }))
 
     setNfts(items)
-    setIsLoaded(true)
+    setIsLoading(false)
   }
 
   async function loadMyNFTs() {
@@ -124,7 +124,7 @@ function MyApp({ Component, pageProps }) {
     ownedNFTs={ownedNfts}
     soldNFTs={soldNfts}
     walletAddress={walletAddress}
-    isLoaded={isLoaded}
+    isLoading={isLoading}
   />
 }
 

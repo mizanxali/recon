@@ -52,7 +52,7 @@ export default function Profile({ ownedNFTs, createdNFTs, soldNFTs, walletAddres
               />
             </div>
           </div>
-        </> : <h1 className='m-auto text-center text-xl font-bold text-primary'>Connect your MetaMask wallet to access this page.</h1>}
+        </> : <h1 className='mx-auto my-32 text-center text-xl font-bold text-primary'>Connect your MetaMask wallet to access this page.</h1>}
       </div>
     </>
   )
