@@ -69,7 +69,7 @@ const GameContent = ({ gameId }) => {
         <>
           <div className='h-20 bg-valorant rounded-t-lg'></div>
           <div className='bg-gray-light rounded-b-lg'>
-            <p className='text-white font-semibold text-base pt-12 pb-3 px-3'>{VALORANT_DESCRIPTION}</p>
+            <p className='text-white font-semibold text-xs md:text-base pt-12 pb-3 px-3'>{VALORANT_DESCRIPTION}</p>
           </div>
         </>
       )
@@ -79,7 +79,7 @@ const GameContent = ({ gameId }) => {
         <>
           <div className='h-20 bg-csgo rounded-t-lg'></div>
           <div className='bg-gray-light rounded-b-lg'>
-            <p className='text-white font-semibold text-base pt-12 pb-3 px-3'>{CSGO_DESCRIPTION}</p>
+            <p className='text-white font-semibold text-xs md:text-base pt-12 pb-3 px-3'>{CSGO_DESCRIPTION}</p>
           </div>
         </>
       )
@@ -89,7 +89,7 @@ const GameContent = ({ gameId }) => {
         <>
           <div className='h-20 bg-fortnite rounded-t-lg'></div>
           <div className='bg-gray-light rounded-b-lg'>
-            <p className='text-white font-semibold text-base pt-12 pb-3 px-3'>{FORTNITE_DESCRIPTION}</p>
+            <p className='text-white font-semibold text-xs md:text-base pt-12 pb-3 px-3'>{FORTNITE_DESCRIPTION}</p>
           </div>
         </>
       )

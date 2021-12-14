@@ -5,7 +5,7 @@ import { CSGO_GAME_ID, FORTNITE_GAME_ID, VALORANT_GAME_ID } from '../../constant
 
 export default function Explore() {
   return (
-    <div className='h-screen'>
+    <div className='min-h-screen'>
       <Navbar />
       <div className='text-center'>
         <Head>
@@ -13,7 +13,7 @@ export default function Explore() {
           <meta name='description' content='NFT Marketplace for gamers' />
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        <h1 className='mx-auto my-12 text-white text-4xl font-bold'>Explore</h1>
+        <h1 className='mx-auto my-8 md:my-12 text-white text-2xl md:text-4xl font-bold'>Explore</h1>
         <div className='mx-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12'>
           <ExploreCard gameId={VALORANT_GAME_ID} />
           <ExploreCard gameId={CSGO_GAME_ID} />

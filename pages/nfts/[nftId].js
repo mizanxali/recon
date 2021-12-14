@@ -83,32 +83,32 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
       <div className='h-screen flex flex-col overflow-hidden'>
         <Navbar />
         <div className='flex flex-col md:flex-row'>
-          <div className='w-2/3 border-2 border-primary m-5 rounded-lg p-1'>
+          <div className='w-5/6 md:w-2/3 mx-auto border-2 border-primary m-5 rounded-lg p-1'>
             <Player
               playsInline
               poster={thumbnail}
               src={clip}
             />
           </div>
-          <div className='w-1/3 flex flex-col justify-center px-10'>
-            <h6 className='my-2 text-gray-mute text-lg font-semibold'>{game}</h6>
-            <h1 className='mb-2 text-2xl text-white font-bold'>{name}</h1>
-            <div className='my-2 w-full flex flex-row text-base justify-between items-center font-semibold'>
-              {showSellerAddress && <h6 className='my-2 text-gray-mute'>Created by <span className='text-primary text-xs'>{sellerFormattedAddress}</span></h6>}
-              {showOwnerAddress && <h6 className='my-2 text-gray-mute'>Owned by <span className='text-primary text-xs'>{ownerFormattedAddress}</span></h6>}
-              <h6 className='text-gray-mute'>
+          <div className='w-full md:w-1/3 flex flex-col justify-center px-8 md:px-10'>
+            <h6 className='my-2 text-gray-mute text-base md:text-lg font-semibold'>{game}</h6>
+            <h1 className='mb-2 text-xl md:text-2xl text-white font-bold'>{name}</h1>
+            <div className='my-2 w-full flex flex-col md:flex-row text-base justify-between items-start md:items-center font-semibold'>
+              {showSellerAddress && <h6 className='my-2 text-2xs md:text-base text-gray-mute'>Created by <span className='text-primary text-3xs md:text-xs'>{sellerFormattedAddress}</span></h6>}
+              {showOwnerAddress && <h6 className='my-2 text-2xs md:text-base text-gray-mute'>Owned by <span className='text-primary text-3xs md:text-xs'>{ownerFormattedAddress}</span></h6>}
+              <h6 className='my-1 text-2xs md:text-base text-gray-mute'>
                 {tag === 'Casual' ? <FaRegDotCircle className='text-blue inline mx-1' /> : <FaRegDotCircle className='text-yellow inline mx-1' />}
                 {tag}
               </h6>
-              <h6 className='text-gray-mute'>
+              <h6 className='my-1 text-gray-mute'>
                 <FiHeart className='text-red inline mx-1' />
                 167
               </h6>
             </div>
-            <p className='my-2 text-lg text-white font-semibold'>{description}</p>
-            <h6 className='mt-2 text-gray-mute text-lg font-semibold'>Price</h6>
-            <h3 className='my-2 text-white text-xl font-bold'>{price} MATIC</h3>
-            {showBuyButton && <button onClick={() => buyNft(theNFT)} className='my-2 w-1/3 bg-primary text-black text-lg px-2 py-1 font-bold rounded-lg'>Buy Now</button>}
+            <p className='my-2 text-base md:text-lg text-white font-semibold'>{description}</p>
+            <h6 className='mt-2 text-gray-mute text-base md:text-lg font-semibold'>Price</h6>
+            <h3 className='my-2 text-white text-lg md:text-xl font-bold'>{price} MATIC</h3>
+            {showBuyButton && <button onClick={() => buyNft(theNFT)} className='my-2 w-1/3 bg-primary text-black text-base md:text-lg px-2 py-1 font-bold rounded-lg'>Buy Now</button>}
           </div>
         </div>
       </div>

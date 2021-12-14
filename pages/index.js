@@ -31,7 +31,7 @@ export default function Home({ NFTs }) {
               <button className='my-2 bg-primary text-black text-sm md:text-xl px-6 py-2 font-bold rounded-lg'>Explore <FiArrowRight className='text-xs md:text-2xl hidden md:inline ml-3' /></button>
             </Link>
           </section>
-          <section className='h-full w-1/2 bg-primary hidden md:flex flex-col items-center justify-center'>
+          <section className='h-full w-1/2 mt-6 md:mt-0 md:bg-primary md:flex flex-col items-center justify-center'>
             {randomNFT && <ClipCard NFT={randomNFT} isOnLandingPage={true} />}
           </section>
         </main>
