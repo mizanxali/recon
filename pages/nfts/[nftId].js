@@ -9,11 +9,26 @@ import Web3Modal from 'web3modal'
 
 import Market from '../../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
 import Navbar from '../../components/Navbar'
+import Loader from '../../components/Loader'
 
-export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
+export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs, isLoading }) {
   const router = useRouter()
   const { nftId } = router.query
   console.log(nftId);
+
+  if (isLoading) return (
+    <>
+      <Head>
+        <title>{nftId} | Recon</title>
+        <meta name='description' content='NFT Marketplace for gamers' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+      <div className='h-screen flex flex-col overflow-hidden'>
+        <Navbar />
+        <Loader />
+      </div>
+    </>
+  )
 
   let showBuyButton = true
 
@@ -96,14 +111,15 @@ export default function NFTPage({ NFTs, ownedNFTs, createdNFTs, soldNFTs }) {
             <div className='my-2 w-full flex flex-col md:flex-row text-base justify-between items-start md:items-center font-semibold'>
               {showSellerAddress && <h6 className='my-2 text-2xs md:text-base text-gray-mute'>Created by <span className='text-primary text-3xs md:text-xs'>{sellerFormattedAddress}</span></h6>}
               {showOwnerAddress && <h6 className='my-2 text-2xs md:text-base text-gray-mute'>Owned by <span className='text-primary text-3xs md:text-xs'>{ownerFormattedAddress}</span></h6>}
-              <h6 className='my-1 text-2xs md:text-base text-gray-mute'>
-                {tag === 'Casual' ? <FaRegDotCircle className='text-blue inline mx-1' /> : <FaRegDotCircle className='text-yellow inline mx-1' />}
-                {tag}
-              </h6>
-              <h6 className='my-1 text-gray-mute'>
-                <FiHeart className='text-red inline mx-1' />
-                167
-              </h6>
+              <div className='flex flex-row w-full justify-between'>
+                <h6 className='my-1 text-2xs md:text-base text-gray-mute'>
+                  {tag === 'Casual' ? <FaRegDotCircle className='text-blue inline mx-1' /> : <FaRegDotCircle className='text-yellow inline mx-1' />}
+                  {tag}
+                </h6>
+                <h6 className='my-1 text-gray-mute'>
+                  <FiHeart className='text-red inline mx-1' />
+                </h6>
+              </div>
             </div>
             <p className='my-2 text-base md:text-lg text-white font-semibold'>{description}</p>
             <h6 className='mt-2 text-gray-mute text-base md:text-lg font-semibold'>Price</h6>

@@ -33,7 +33,7 @@ export default function Game({ NFTs, isLoading }) {
         <meta name='description' content='NFT Marketplace for gamers' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className='md:h-screen flex flex-col overflow-hidden'>
+      <div className='min-h-screen md:h-screen flex flex-col overflow-hidden'>
         <Navbar />
         <div className='flex flex-col md:flex-row text-center overflow-hidden'>
           <div className='w-full md:w-1/6 flex flex-col items-center md:items-start text-center md:text-left border-r-2 border-gray-light px-6 pt-4'>
@@ -59,7 +59,9 @@ export default function Game({ NFTs, isLoading }) {
             {isLoading ? <Loader /> : thisGameNFTs.length ?
               <div className='my-6 mx-16 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-8'>
                 {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
-              </div> : <h1 className='text-center text-xl text-primary'>No NFTs found.</h1>}
+                {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
+                {thisGameNFTs.map((NFT, i) => <ClipCard key={i} NFT={NFT} />)}
+              </div> : <h1 className='my-16 text-center text-xl text-primary'>No NFTs found.</h1>}
           </div>
         </div>
       </div>
